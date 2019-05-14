@@ -3,7 +3,7 @@ import java.awt.Color;
 import javax.swing.JColorChooser;
 import java.awt.Font; 
 import java.io.*;
-import java.util.Iterator;
+import java.util.*;
 import java.util.Scanner;
 import java.util.Vector;
 import java.util.logging.Level;
@@ -29,12 +29,10 @@ import javax.swing.table.TableModel;
  * @author BRIAN
  */
 public class Excel extends javax.swing.JFrame {
-
-    /**
-     * Creates new form Excel
-     */
+    DefaultTableModel md;
+    String data [][] = {};
     public Excel() {
-        
+        md = new DefaultTableModel();
         initComponents();
         TableColumnModel tcm = jTableAZ.getColumnModel();
         tcm.getColumn(0).setResizable(false);
@@ -54,6 +52,7 @@ public class Excel extends javax.swing.JFrame {
 
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableAZ = new javax.swing.JTable();
+        jPanel2 = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem5 = new javax.swing.JMenuItem();
@@ -73,7 +72,6 @@ public class Excel extends javax.swing.JFrame {
         jMenu4 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
 
@@ -108,7 +106,8 @@ public class Excel extends javax.swing.JFrame {
                 {"27", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
                 {"28", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
                 {"29", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {"30", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null}
+                {"30", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {"31", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
                 "", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "Ñ", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"
@@ -118,13 +117,9 @@ public class Excel extends javax.swing.JFrame {
         jTableAZ.setDropMode(javax.swing.DropMode.ON_OR_INSERT);
         jScrollPane2.setViewportView(jTableAZ);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1050, 480));
-
         jMenuBar1.setBackground(new java.awt.Color(255, 255, 255));
-        jMenuBar1.setForeground(new java.awt.Color(0, 0, 0));
 
         jMenu1.setBackground(new java.awt.Color(255, 255, 255));
-        jMenu1.setForeground(new java.awt.Color(0, 0, 0));
         jMenu1.setText("ARCHIVO");
 
         jMenuItem5.setText("ABRIR");
@@ -154,7 +149,6 @@ public class Excel extends javax.swing.JFrame {
         jMenuBar1.add(jMenu1);
 
         jMenu2.setBackground(new java.awt.Color(255, 255, 255));
-        jMenu2.setForeground(new java.awt.Color(0, 0, 0));
         jMenu2.setText("NUEVO ");
         jMenu2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -164,7 +158,6 @@ public class Excel extends javax.swing.JFrame {
         jMenuBar1.add(jMenu2);
 
         jMenu3.setBackground(new java.awt.Color(255, 255, 255));
-        jMenu3.setForeground(new java.awt.Color(0, 0, 0));
         jMenu3.setText("OPCIONES");
 
         jMenuItem4.setText("COPIAR");
@@ -233,7 +226,6 @@ public class Excel extends javax.swing.JFrame {
         jMenuBar1.add(jMenu3);
 
         jMenu4.setBackground(new java.awt.Color(255, 255, 255));
-        jMenu4.setForeground(new java.awt.Color(0, 0, 0));
         jMenu4.setText("AYUDA");
         jMenu4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -244,69 +236,47 @@ public class Excel extends javax.swing.JFrame {
 
         setJMenuBar(jMenuBar1);
 
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1257, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 515, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // boton guardar
+        // boton guardar 
         
+        JFileChooser fc = new JFileChooser();
+        fc.showSaveDialog(this);
+        String guardar = fc.getSelectedFile().getAbsolutePath();
         
-        
-        String filePath = "C:\\Excel1.2\\EXCEL\\datos.txt";
-        File file = new File(filePath);
+        File file = new File(guardar);
         saveTable(file);
-       
-        
+             
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
-    
-    
-    private void saveTable(File file){
-        
-        
-        try {
-            FileWriter fw = new FileWriter(file);
-            BufferedWriter bw = new BufferedWriter(fw);
-            
-            for(int i = 0; i < jTableAZ.getRowCount(); i++){//rows
-                for(int j = 0; j < jTableAZ.getColumnCount(); j++){//columns
-                    Object value = jTableAZ.getValueAt(i,j);
-                    if(value!=null){
-                        bw.write(jTableAZ.getValueAt(i, j).toString()+",");
-                    }else{
-                        bw.write(" ,");
-                    }
-                    
-                }
-                bw.newLine();
-            }
-            
-            bw.close();
-            fw.close();
-            
-        } catch (IOException ex) {
-            Logger.getLogger(Excel.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-    }
-    
-    private DefaultTableModel getTableModel(JTable table){
-        DefaultTableModel model = (DefaultTableModel) table.getModel();
-        
-        return model;
-    }
-    
-    
-    
     private void jMenu4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu4MousePressed
-        
+       
        Ayuda abrir = new Ayuda();
         abrir.setVisible(rootPaneCheckingEnabled);
-          this.setVisible(false);
-        
-        
-        
-        
+          this.setVisible(false);      
         
     }//GEN-LAST:event_jMenu4MousePressed
 
@@ -317,52 +287,20 @@ public class Excel extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     private void jMenu2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MousePressed
+        
+        String Columna="";
+        Object[][] filas = new Object [31][27];
+        for(int intconteo = 0;intconteo<=30;intconteo++){
+            Columna = Integer.toString(intconteo);  
+            filas[intconteo][0]=Columna;
+            for(int intcolum = 1;intcolum<=26;intcolum++){
+                filas[intconteo][intcolum]= null;
+            }        
+        }
       
-  jTableAZ.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, "", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null}
-            },
+        jTableAZ.setModel(new javax.swing.table.DefaultTableModel(filas,
             new String [] {
-                "A", "B", "C", "D", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"
+                "","A", "B", "C", "D", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"
             }
         ));
      
@@ -403,10 +341,56 @@ public class Excel extends javax.swing.JFrame {
         jTableAZ.setFont(fuente); 
     }//GEN-LAST:event_jMenuItem11MousePressed
 
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        // boton para cargar o abrir
+           final JFileChooser fc = new JFileChooser();
+           fc.showOpenDialog(this);
+           String path = fc.getSelectedFile().getAbsolutePath();          
+           File f = new File(path);
+
+            if (f.isFile()){
+                loadTable(f);
+            }   
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+ 
+//AQUI VAN TODOS LAS FUNCIONES Y METODOS
+    //RESTAURAR
+    public void restaurar(){
+        
+    }   
     
-    private void loadTable(File file) {
+    private void saveTable(File file){   
+        try {
+            FileWriter fw = new FileWriter(file);
+            BufferedWriter bw = new BufferedWriter(fw);
+            
+            for(int i = 0; i < jTableAZ.getRowCount(); i++){//rows
+                for(int j = 0; j < jTableAZ.getColumnCount(); j++){//columns
+                    Object value = jTableAZ.getValueAt(i,j);
+                    if(value!=null){
+                        bw.write(jTableAZ.getValueAt(i, j).toString()+",");
+                    }else{
+                        bw.write(" ,");
+                    }
+                    
+                }
+                bw.newLine();
+            }
+            
+            bw.close();
+            fw.close();
+            
+        } catch (IOException ex) {
+            Logger.getLogger(Excel.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
-        
+    }
+    private DefaultTableModel getTableModel(JTable table){
+        DefaultTableModel model = (DefaultTableModel) table.getModel();        
+        return model;
+    }
+    
+    private void loadTable(File file) {        
         try {
             FileReader fr = new FileReader(file);
             BufferedReader br = new BufferedReader(fr);
@@ -426,34 +410,10 @@ public class Excel extends javax.swing.JFrame {
     
     }
     
-    
-    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-        // boton para cargar o abrir
-        
-
-
-           final JFileChooser fc = new JFileChooser();
-           fc.showOpenDialog(this);
-           String path = fc.getSelectedFile().getAbsolutePath();          
-           File f = new File(path);
-
-            if (f.isFile()){
-                loadTable(f);
-            }
-        
-          
-        
-    }//GEN-LAST:event_jMenuItem5ActionPerformed
-
-    
-    
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        
-        
-        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Excel().setVisible(true);
@@ -480,6 +440,7 @@ public class Excel extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTableAZ;
     // End of variables declaration//GEN-END:variables
