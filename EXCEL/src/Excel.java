@@ -33,6 +33,7 @@ public class Excel extends javax.swing.JFrame {
     DefaultTableModel md;
     String data [][] = {};
     Font tipoletra;
+    CellData[][] clipboard;
     public Excel() {
         md = new DefaultTableModel();
         initComponents();
@@ -215,9 +216,19 @@ public class Excel extends javax.swing.JFrame {
         jMenu3.setText("OPCIONES");
 
         jMenuItem4.setText("COPIAR");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem4);
 
         jMenuItem3.setText("PEGAR");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem3);
 
         jMenuItem6.setText("COLOR DE LETRA");
@@ -415,6 +426,49 @@ public class Excel extends javax.swing.JFrame {
            jTableAZ.setFont(tipoletra);
        }
     }//GEN-LAST:event_btnTipoLetraActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        // TODO add your handling code here:
+         int a = jTableAZ.getSelectedColumn(), b = jTableAZ.getSelectedRow();
+            if (Excel.this.clipboard != null){
+                JOptionPane.showInputDialog("Si1");
+              for (int i = 0; i <= Excel.this.clipboard[0].length - 1; i++) {
+                  JOptionPane.showInputDialog("Si2");
+                if (a + i <= Excel.this.jTableAZ.getColumnCount() - 1) {
+                    JOptionPane.showInputDialog("Si3");
+                  for (int j = 0; j <= Excel.this.clipboard.length - 1; j++) {
+                      JOptionPane.showInputDialog("Si4");
+                    if (b + j <= Excel.this.jTableAZ.getRowCount() - 1) {
+                        JOptionPane.showInputDialog("Si5");
+                      jTableAZ.setValueAt(Excel.this.clipboard[j][i], b + j, a + i);
+                      JOptionPane.showInputDialog("Si");
+                    }
+                  } 
+                }
+              } 
+            }else{
+                JOptionPane.showInputDialog("Si");
+            }
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        // TODO add your handling code here:
+        int[] a = jTableAZ.getSelectedColumns(), b = jTableAZ.getSelectedRows();
+            Excel.this.clipboard = new CellData[b.length][a.length];
+            
+            for (int i = 0; i <= a.length - 1; i++) {
+              for (int j = 0; j <= b.length - 1; j++) {
+                CellData temp;
+                  temp = (CellData) jTableAZ.getValueAt(b[j], a[i]);
+                  JOptionPane.showInputDialog("sdasd "+temp);
+                try {
+                  Excel.this.clipboard[j][i] = (CellData)temp.clone();
+                  
+                } catch (CloneNotSupportedException ex) {}
+               
+              }
+              } 
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
  
 //AQUI VAN TODOS LAS FUNCIONES Y METODOS
     //RESTAURAR
