@@ -1,5 +1,6 @@
 
 import java.awt.Color;
+import java.awt.Desktop;
 import javax.swing.JColorChooser;
 import java.awt.Font; 
 import java.io.*;
@@ -352,10 +353,14 @@ public class Excel extends javax.swing.JFrame {
 
     private void jMenu4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu4MousePressed
        
-       Ayuda abrir = new Ayuda();
-        abrir.setVisible(rootPaneCheckingEnabled);
-          this.setVisible(false);      
-        
+        if(Desktop.isDesktopSupported()){
+            
+      try {
+        File path = new File (new File("").getAbsoluteFile()+"/src/Manual de Usuario.PDF");
+            Desktop.getDesktop().open(path);
+            }catch (IOException ex) {         
+            }   
+        }
     }//GEN-LAST:event_jMenu4MousePressed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
@@ -444,17 +449,11 @@ public class Excel extends javax.swing.JFrame {
         // TODO add your handling code here:
          int a = jTableAZ.getSelectedColumn(), b = jTableAZ.getSelectedRow();
             if (Excel.this.clipboard != null){
-                JOptionPane.showInputDialog("Si1");
               for (int i = 0; i <= Excel.this.clipboard[0].length - 1; i++) {
-                  JOptionPane.showInputDialog("Si2");
                 if (a + i <= Excel.this.jTableAZ.getColumnCount() - 1) {
-                    JOptionPane.showInputDialog("Si3");
-                  for (int j = 0; j <= Excel.this.clipboard.length - 1; j++) {
-                      JOptionPane.showInputDialog("Si4");
-                    if (b + j <= Excel.this.jTableAZ.getRowCount() - 1) {
-                        JOptionPane.showInputDialog("Si5");
-                      jTableAZ.setValueAt(Excel.this.clipboard[j][i], b + j, a + i);
-                      JOptionPane.showInputDialog("Si");
+                  for (int j = 0; j <= Excel.this.clipboard.length - 1; j++) {                    
+                    if (b + j <= Excel.this.jTableAZ.getRowCount() - 1) {                      
+                      jTableAZ.setValueAt(Excel.this.clipboard[j][i], b + j, a + i);                     
                     }
                   } 
                 }
