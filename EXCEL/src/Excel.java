@@ -1,15 +1,21 @@
 
 import java.awt.Color;
-import java.awt.Desktop;
 import javax.swing.JColorChooser;
 import java.awt.Font; 
 import java.io.*;
+import java.util.*;
+import java.util.Scanner;
+import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.*;
+import javax.swing.table.*;
+import javax.swing.UIManager;
+import javax.swing.border.MatteBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
-import say.swing.JFontChooser;
+import javax.swing.table.TableModel;
+//import say.swing.JFontChooser;
 
 
 
@@ -24,13 +30,10 @@ import say.swing.JFontChooser;
  * @author BRIAN
  */
 public class Excel extends javax.swing.JFrame {
-    
-    
     DefaultTableModel md;
     String data [][] = {};
     Font tipoletra;
     CellData[][] clipboard;
-    
     public Excel() {
         md = new DefaultTableModel();
         initComponents();
@@ -38,7 +41,6 @@ public class Excel extends javax.swing.JFrame {
         tcm.getColumn(0).setResizable(false);
         tcm.getColumn(0).setPreferredWidth(25);
         jTableAZ.getTableHeader().setReorderingAllowed(false);
-        
    
     }
 
@@ -57,23 +59,24 @@ public class Excel extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jblTipoletra = new javax.swing.JLabel();
         btnTipoLetra = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jmuArchivo = new javax.swing.JMenu();
-        jmiAbrir = new javax.swing.JMenuItem();
-        jmiGuardar = new javax.swing.JMenuItem();
-        jmiSalir = new javax.swing.JMenuItem();
-        jmuNuevo = new javax.swing.JMenu();
-        jmuOpciones = new javax.swing.JMenu();
-        jmiCopiar = new javax.swing.JMenuItem();
-        jmiPegar = new javax.swing.JMenuItem();
-        jmiColorLetra = new javax.swing.JMenuItem();
-        jmuTipoLetra = new javax.swing.JMenu();
-        jmiCalibri = new javax.swing.JMenuItem();
-        jmiArial = new javax.swing.JMenuItem();
-        jmiMvBoli = new javax.swing.JMenuItem();
-        jmiConsolas = new javax.swing.JMenuItem();
-        jmiComic = new javax.swing.JMenuItem();
-        jmiColorFondo = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenu3 = new javax.swing.JMenu();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
+        jMenu5 = new javax.swing.JMenu();
+        jMenuItem7 = new javax.swing.JMenuItem();
+        jMenuItem8 = new javax.swing.JMenuItem();
+        jMenuItem9 = new javax.swing.JMenuItem();
+        jMenuItem10 = new javax.swing.JMenuItem();
+        jMenuItem11 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -119,6 +122,7 @@ public class Excel extends javax.swing.JFrame {
             }
         ));
         jTableAZ.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        jTableAZ.setCellSelectionEnabled(true);
         jTableAZ.setDropMode(javax.swing.DropMode.ON_OR_INSERT);
         jScrollPane2.setViewportView(jTableAZ);
 
@@ -154,6 +158,20 @@ public class Excel extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("jButton2");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -161,6 +179,10 @@ public class Excel extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(507, 507, 507)
+                .addComponent(jButton1)
+                .addGap(27, 27, 27)
+                .addComponent(jButton2)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -169,135 +191,131 @@ public class Excel extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jMenuBar1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jmuArchivo.setBackground(new java.awt.Color(255, 255, 255));
-        jmuArchivo.setText("ARCHIVO");
+        jMenu1.setBackground(new java.awt.Color(255, 255, 255));
+        jMenu1.setText("ARCHIVO");
 
-        jmiAbrir.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
-        jmiAbrir.setText("ABRIR");
-        jmiAbrir.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem5.setText("ABRIR");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmiAbrirActionPerformed(evt);
+                jMenuItem5ActionPerformed(evt);
             }
         });
-        jmuArchivo.add(jmiAbrir);
+        jMenu1.add(jMenuItem5);
 
-        jmiGuardar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_G, java.awt.event.InputEvent.CTRL_MASK));
-        jmiGuardar.setText("GUARDAR");
-        jmiGuardar.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem1.setText("GUARDAR");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmiGuardarActionPerformed(evt);
+                jMenuItem1ActionPerformed(evt);
             }
         });
-        jmuArchivo.add(jmiGuardar);
+        jMenu1.add(jMenuItem1);
 
-        jmiSalir.setText("SALIR");
-        jmiSalir.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem2.setText("SALIR");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmiSalirActionPerformed(evt);
+                jMenuItem2ActionPerformed(evt);
             }
         });
-        jmuArchivo.add(jmiSalir);
+        jMenu1.add(jMenuItem2);
 
-        jMenuBar1.add(jmuArchivo);
+        jMenuBar1.add(jMenu1);
 
-        jmuNuevo.setBackground(new java.awt.Color(255, 255, 255));
-        jmuNuevo.setText("NUEVO ");
-        jmuNuevo.addMouseListener(new java.awt.event.MouseAdapter() {
+        jMenu2.setBackground(new java.awt.Color(255, 255, 255));
+        jMenu2.setText("NUEVO ");
+        jMenu2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jmuNuevoMousePressed(evt);
+                jMenu2MousePressed(evt);
             }
         });
-        jMenuBar1.add(jmuNuevo);
+        jMenuBar1.add(jMenu2);
 
-        jmuOpciones.setBackground(new java.awt.Color(255, 255, 255));
-        jmuOpciones.setText("OPCIONES");
+        jMenu3.setBackground(new java.awt.Color(255, 255, 255));
+        jMenu3.setText("OPCIONES");
 
-        jmiCopiar.setText("COPIAR");
-        jmiCopiar.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem4.setText("COPIAR");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmiCopiarActionPerformed(evt);
+                jMenuItem4ActionPerformed(evt);
             }
         });
-        jmuOpciones.add(jmiCopiar);
+        jMenu3.add(jMenuItem4);
 
-        jmiPegar.setText("PEGAR");
-        jmiPegar.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem3.setText("PEGAR");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmiPegarActionPerformed(evt);
+                jMenuItem3ActionPerformed(evt);
             }
         });
-        jmuOpciones.add(jmiPegar);
+        jMenu3.add(jMenuItem3);
 
-        jmiColorLetra.setText("COLOR DE LETRA");
-        jmiColorLetra.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem6.setText("COLOR DE LETRA");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmiColorLetraActionPerformed(evt);
+                jMenuItem6ActionPerformed(evt);
             }
         });
-        jmuOpciones.add(jmiColorLetra);
+        jMenu3.add(jMenuItem6);
 
-        jmuTipoLetra.setText("TIPO DE LETRA");
+        jMenu5.setText("TIPO DE LETRA");
 
-        jmiCalibri.setText("CALIBRI");
-        jmiCalibri.addMouseListener(new java.awt.event.MouseAdapter() {
+        jMenuItem7.setText("CALIBRI");
+        jMenuItem7.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jmiCalibriMousePressed(evt);
+                jMenuItem7MousePressed(evt);
             }
         });
-        jmiCalibri.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmiCalibriActionPerformed(evt);
+                jMenuItem7ActionPerformed(evt);
             }
         });
-        jmuTipoLetra.add(jmiCalibri);
+        jMenu5.add(jMenuItem7);
 
-        jmiArial.setText("ARIAL");
-        jmiArial.addMouseListener(new java.awt.event.MouseAdapter() {
+        jMenuItem8.setText("ARIAL");
+        jMenuItem8.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jmiArialMousePressed(evt);
+                jMenuItem8MousePressed(evt);
             }
         });
-        jmuTipoLetra.add(jmiArial);
+        jMenu5.add(jMenuItem8);
 
-        jmiMvBoli.setText("MV BOLI");
-        jmiMvBoli.addMouseListener(new java.awt.event.MouseAdapter() {
+        jMenuItem9.setText("MV BOLI");
+        jMenuItem9.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jmiMvBoliMousePressed(evt);
+                jMenuItem9MousePressed(evt);
             }
         });
-        jmuTipoLetra.add(jmiMvBoli);
+        jMenu5.add(jMenuItem9);
 
-        jmiConsolas.setText("CONSOLAS");
-        jmiConsolas.addMouseListener(new java.awt.event.MouseAdapter() {
+        jMenuItem10.setText("CONSOLAS");
+        jMenuItem10.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jmiConsolasMousePressed(evt);
+                jMenuItem10MousePressed(evt);
             }
         });
-        jmuTipoLetra.add(jmiConsolas);
+        jMenu5.add(jMenuItem10);
 
-        jmiComic.setText("COMIC SANS MS");
-        jmiComic.addMouseListener(new java.awt.event.MouseAdapter() {
+        jMenuItem11.setText("COMIC SANS MS");
+        jMenuItem11.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jmiComicMousePressed(evt);
+                jMenuItem11MousePressed(evt);
             }
         });
-        jmuTipoLetra.add(jmiComic);
+        jMenu5.add(jMenuItem11);
 
-        jmuOpciones.add(jmuTipoLetra);
+        jMenu3.add(jMenu5);
 
-        jmiColorFondo.setText("COLOR FONDO");
-        jmiColorFondo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmiColorFondoActionPerformed(evt);
-            }
-        });
-        jmuOpciones.add(jmiColorFondo);
-
-        jMenuBar1.add(jmuOpciones);
+        jMenuBar1.add(jMenu3);
 
         jMenu4.setBackground(new java.awt.Color(255, 255, 255));
         jMenu4.setText("AYUDA");
@@ -334,7 +352,7 @@ public class Excel extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jmiGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiGuardarActionPerformed
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // boton guardar 
         
         JFileChooser fc = new JFileChooser();
@@ -344,33 +362,28 @@ public class Excel extends javax.swing.JFrame {
         File file = new File(guardar);
         saveTable(file);
              
-    }//GEN-LAST:event_jmiGuardarActionPerformed
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenu4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu4MousePressed
        
-        if(Desktop.isDesktopSupported()){
-            
-      try {
-          //Abre el manuela de usuario que esta guardada en src como manual de usuario.pdf
-        File path = new File (new File("").getAbsoluteFile()+"/src/Manual de Usuario.PDF");
-            Desktop.getDesktop().open(path);
-            }catch (IOException ex) {         
-            }   
-        }
+       Ayuda abrir = new Ayuda();
+        abrir.setVisible(rootPaneCheckingEnabled);
+          this.setVisible(false);      
+        
     }//GEN-LAST:event_jMenu4MousePressed
 
-    private void jmiColorLetraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiColorLetraActionPerformed
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
           Color c = JColorChooser.showDialog(rootPane,"COLOR", this.getForeground()); 
           jTableAZ.setForeground(c);
           
-    }//GEN-LAST:event_jmiColorLetraActionPerformed
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
 
-    private void jmuNuevoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmuNuevoMousePressed
+    private void jMenu2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MousePressed
         
         String Columna="";
         Object[][] filas = new Object [31][27];
         for(int intconteo = 0;intconteo<=30;intconteo++){
-            Columna = Integer.toString(intconteo);  
+            Columna = Integer.toString(intconteo+1);  
             filas[intconteo][0]=Columna;
             for(int intcolum = 1;intcolum<=26;intcolum++){
                 filas[intconteo][intcolum]= null;
@@ -381,46 +394,52 @@ public class Excel extends javax.swing.JFrame {
             new String [] {
                 "","A", "B", "C", "D", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"
             }
+                
+                
+                
         ));
      
+        TableColumnModel tcm = jTableAZ.getColumnModel();
+        tcm.getColumn(0).setResizable(false);
+        tcm.getColumn(0).setPreferredWidth(25);
+        jTableAZ.getTableHeader().setReorderingAllowed(false);
         
-        
-    }//GEN-LAST:event_jmuNuevoMousePressed
+    }//GEN-LAST:event_jMenu2MousePressed
 
-    private void jmiSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiSalirActionPerformed
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         System.exit(0);
-    }//GEN-LAST:event_jmiSalirActionPerformed
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
-    private void jmiCalibriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiCalibriActionPerformed
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
 
-    }//GEN-LAST:event_jmiCalibriActionPerformed
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
 
-    private void jmiCalibriMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmiCalibriMousePressed
+    private void jMenuItem7MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem7MousePressed
         Font fuente = new Font("Calibri", 10,20);
         jTableAZ.setFont(fuente); 
-    }//GEN-LAST:event_jmiCalibriMousePressed
+    }//GEN-LAST:event_jMenuItem7MousePressed
 
-    private void jmiArialMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmiArialMousePressed
+    private void jMenuItem8MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem8MousePressed
         Font fuente = new Font("Arial", 10, 20);
         jTableAZ.setFont(fuente); 
-    }//GEN-LAST:event_jmiArialMousePressed
+    }//GEN-LAST:event_jMenuItem8MousePressed
 
-    private void jmiMvBoliMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmiMvBoliMousePressed
+    private void jMenuItem9MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem9MousePressed
           Font fuente = new Font("MV Boli", 10, 20);
         jTableAZ.setFont(fuente); 
-    }//GEN-LAST:event_jmiMvBoliMousePressed
+    }//GEN-LAST:event_jMenuItem9MousePressed
 
-    private void jmiConsolasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmiConsolasMousePressed
+    private void jMenuItem10MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem10MousePressed
            Font fuente = new Font("Consolas", 10, 20);
         jTableAZ.setFont(fuente); 
-    }//GEN-LAST:event_jmiConsolasMousePressed
+    }//GEN-LAST:event_jMenuItem10MousePressed
 
-    private void jmiComicMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmiComicMousePressed
+    private void jMenuItem11MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem11MousePressed
            Font fuente = new Font("Comic Sans MS", 10, 20);
         jTableAZ.setFont(fuente); 
-    }//GEN-LAST:event_jmiComicMousePressed
+    }//GEN-LAST:event_jMenuItem11MousePressed
 
-    private void jmiAbrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiAbrirActionPerformed
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
         // boton para cargar o abrir
            final JFileChooser fc = new JFileChooser();
            fc.showOpenDialog(this);
@@ -430,27 +449,32 @@ public class Excel extends javax.swing.JFrame {
             if (f.isFile()){
                 loadTable(f);
             }   
-    }//GEN-LAST:event_jmiAbrirActionPerformed
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void btnTipoLetraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTipoLetraActionPerformed
-       JFontChooser tipodelaletraseleccion = new JFontChooser();
-       int inttp = tipodelaletraseleccion.showDialog(this);
-       if(inttp == JFontChooser.OK_OPTION){
-           tipoletra = tipodelaletraseleccion.getSelectedFont();
-           jTableAZ.setFont(tipoletra);
-       }
+//       JFontChooser tipodelaletraseleccion = new JFontChooser();
+//       int inttp = tipodelaletraseleccion.showDialog(this);
+//       if(inttp == JFontChooser.OK_OPTION){
+//           tipoletra = tipodelaletraseleccion.getSelectedFont();
+//           jTableAZ.setFont(tipoletra);
+//       }
     }//GEN-LAST:event_btnTipoLetraActionPerformed
-
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         // TODO add your handling code here:
          int a = jTableAZ.getSelectedColumn(), b = jTableAZ.getSelectedRow();
             if (Excel.this.clipboard != null){
+                JOptionPane.showInputDialog("Si1");
               for (int i = 0; i <= Excel.this.clipboard[0].length - 1; i++) {
+                  JOptionPane.showInputDialog("Si2");
                 if (a + i <= Excel.this.jTableAZ.getColumnCount() - 1) {
-                  for (int j = 0; j <= Excel.this.clipboard.length - 1; j++) {                    
-                    if (b + j <= Excel.this.jTableAZ.getRowCount() - 1) {                      
-                      jTableAZ.setValueAt(Excel.this.clipboard[j][i], b + j, a + i);                     
+                    JOptionPane.showInputDialog("Si3");
+                  for (int j = 0; j <= Excel.this.clipboard.length - 1; j++) {
+                      JOptionPane.showInputDialog("Si4");
+                    if (b + j <= Excel.this.jTableAZ.getRowCount() - 1) {
+                        JOptionPane.showInputDialog("Si5");
+                      jTableAZ.setValueAt(Excel.this.clipboard[j][i], b + j, a + i);
+                      JOptionPane.showInputDialog("Si");
                     }
                   } 
                 }
@@ -460,46 +484,132 @@ public class Excel extends javax.swing.JFrame {
             }
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
-    private void jmiPegarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiPegarActionPerformed
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        // COMENTADO PORQUE DA ERROR; NO SIRVE
         
-    }//GEN-LAST:event_jmiPegarActionPerformed
+//        int[] a = jTableAZ.getSelectedColumns(), b = jTableAZ.getSelectedRows();
+//            Excel.this.clipboard = new CellData[b.length][a.length];
+//            
+//            for (int i = 0; i <= a.length - 1; i++) {
+//              for (int j = 0; j <= b.length - 1; j++) {
+//                CellData temp;
+//                  temp = (CellData) jTableAZ.getValueAt(b[j], a[i]);
+//                  JOptionPane.showInputDialog("sdasd "+temp);
+//                try {
+//                  Excel.this.clipboard[j][i] = (CellData)temp.clone();
+//                  
+//                } catch (CloneNotSupportedException ex) {}
+//               
+//              }
+//              } 
+
+                    
 
 
-    private void jmiCopiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiCopiarActionPerformed
-        // TODO add your handling code here:
-        int[] a = jTableAZ.getSelectedColumns(), b = jTableAZ.getSelectedRows();
-            Excel.this.clipboard = new CellData[b.length][a.length];
-            
-            for (int i = 0; i <= a.length - 1; i++) {
-              for (int j = 0; j <= b.length - 1; j++) {
-                CellData temp;
-                  temp = (CellData) jTableAZ.getValueAt(b[j], a[i]);
-                  JOptionPane.showInputDialog("sdasd "+temp);
-                try {
-                  Excel.this.clipboard[j][i] = (CellData)temp.clone();
-                  
-                } catch (CloneNotSupportedException ex) {}
-               
-              }
-              } 
-    }//GEN-LAST:event_jmiCopiarActionPerformed
 
-    private void jmiColorFondoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiColorFondoActionPerformed
-        // TODO add your handling code here:
-        //FOndo
-        //Desea cambiar el color del fondo
-        JColorChooser jcc = new JColorChooser();
-        Color c = jcc.showDialog(null, "Por favor seleccione el color",Color.RED);
-        //Cambia el colo de las celdas
-        jTableAZ.setBackground(c);
+
+
+
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
-    }//GEN-LAST:event_jmiColorFondoActionPerformed
+        File file = new File("copiar.txt");
+        
+        copiar(file);
+        
+        
+        
+        
+        
+        
+//        System.out.println(""+datos);
+//        
+//        for(i = 0; i < rows.length ; i++){
+//            String[] fil =datos.split("\n");
+//            for(j = 0; j < colm.length ; j++){
+//            String[] col = fil[i].split("\t");
+//            
+//            jTableAZ.setValueAt(col[j], 15+i, 8+j);
+//        }
+//            System.out.print("\n");
+//        }
+//        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        //ABRIR
+        File file = new File("copiar.txt");
+        pegar(file);
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
  
 //AQUI VAN TODOS LAS FUNCIONES Y METODOS
     //RESTAURAR
     public void restaurar(){
         
     }   
+    
+    private void pegar(File file){
+        int row = jTableAZ.getSelectedRow();
+        int col = jTableAZ.getSelectedColumn();
+        
+        try {
+            FileReader fr = new FileReader(file);
+            BufferedReader br = new BufferedReader(fr);
+            
+            Object[] lines = br.lines().toArray();
+            String[] colmsAyd =lines[0].toString().split("\t");
+            
+            for(int i = 0; i < lines.length ; i++){
+                String[] colums = lines[i].toString().split("\t");
+                for(int j = 0; j < colmsAyd.length ; j++){
+                
+                jTableAZ.setValueAt(colums[j], row+i, col+j);
+            }
+            }
+            
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Excel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+    
+    private void copiar(File file){
+        int rows[] = jTableAZ.getSelectedRows();
+        int colm[] = jTableAZ.getSelectedColumns();
+        
+        try {
+            
+            FileWriter fw = new FileWriter(file);
+            BufferedWriter bw = new BufferedWriter(fw);
+            
+            for(int i = 0; i < rows.length ; i++){
+                for(int j = 0; j < colm.length ; j++){
+                   Object value = jTableAZ.getValueAt(rows[i],colm[j]);
+
+                if(value!=null){
+                            bw.write(jTableAZ.getValueAt(rows[i],colm[j]).toString()+"\t");
+                        }else{
+                            bw.write(" \t");
+                }
+
+            }
+                bw.newLine();
+            }
+            
+            bw.close();
+            fw.close();
+            
+            
+            
+        } catch (IOException ex) {
+            Logger.getLogger(Excel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        
+    }
     
     private void saveTable(File file){   
         try {
@@ -527,6 +637,7 @@ public class Excel extends javax.swing.JFrame {
         }
         
     }
+    
     private DefaultTableModel getTableModel(JTable table){
         DefaultTableModel model = (DefaultTableModel) table.getModel();        
         return model;
@@ -566,29 +677,30 @@ public class Excel extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnTipoLetra;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem10;
+    private javax.swing.JMenuItem jMenuItem11;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTableAZ;
     private javax.swing.JLabel jblTipoletra;
-    private javax.swing.JMenuItem jmiAbrir;
-    private javax.swing.JMenuItem jmiArial;
-    private javax.swing.JMenuItem jmiCalibri;
-    private javax.swing.JMenuItem jmiColorFondo;
-    private javax.swing.JMenuItem jmiColorLetra;
-    private javax.swing.JMenuItem jmiComic;
-    private javax.swing.JMenuItem jmiConsolas;
-    private javax.swing.JMenuItem jmiCopiar;
-    private javax.swing.JMenuItem jmiGuardar;
-    private javax.swing.JMenuItem jmiMvBoli;
-    private javax.swing.JMenuItem jmiPegar;
-    private javax.swing.JMenuItem jmiSalir;
-    private javax.swing.JMenu jmuArchivo;
-    private javax.swing.JMenu jmuNuevo;
-    private javax.swing.JMenu jmuOpciones;
-    private javax.swing.JMenu jmuTipoLetra;
     // End of variables declaration//GEN-END:variables
 
     
