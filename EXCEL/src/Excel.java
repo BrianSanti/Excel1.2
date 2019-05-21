@@ -356,6 +356,7 @@ public class Excel extends javax.swing.JFrame {
         if(Desktop.isDesktopSupported()){
             
       try {
+          //Abre el manuela de usuario que esta guardada en src como manual de usuario.pdf
         File path = new File (new File("").getAbsoluteFile()+"/src/Manual de Usuario.PDF");
             Desktop.getDesktop().open(path);
             }catch (IOException ex) {         
@@ -485,8 +486,10 @@ public class Excel extends javax.swing.JFrame {
     private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
         // TODO add your handling code here:
         //FOndo
+        //Desea cambiar el color del fondo
         JColorChooser jcc = new JColorChooser();
-        Color c = jcc.showDialog(null, "Please select a color",Color.RED);
+        Color c = jcc.showDialog(null, "Por favor seleccione el color",Color.RED);
+        //Cambia el colo de las celdas
         jTableAZ.setBackground(c);
         
     }//GEN-LAST:event_jMenuItem12ActionPerformed
