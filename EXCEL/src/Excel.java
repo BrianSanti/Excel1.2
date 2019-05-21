@@ -1,5 +1,6 @@
 
 import java.awt.Color;
+import java.awt.Desktop;
 import javax.swing.JColorChooser;
 import java.awt.Font; 
 import java.io.*;
@@ -66,6 +67,7 @@ public class Excel extends javax.swing.JFrame {
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem12 = new javax.swing.JMenuItem();
+        jMenuItem7 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -194,6 +196,14 @@ public class Excel extends javax.swing.JFrame {
         });
         jMenu3.add(jMenuItem12);
 
+        jMenuItem7.setText("COLOR DE FONDO");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem7);
+
         jMenuBar1.add(jMenu3);
 
         jMenu4.setBackground(new java.awt.Color(255, 255, 255));
@@ -241,9 +251,15 @@ public class Excel extends javax.swing.JFrame {
 
     private void jMenu4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu4MousePressed
        
-       Ayuda abrir = new Ayuda();
-        abrir.setVisible(rootPaneCheckingEnabled);
-          this.setVisible(false);      
+       if(Desktop.isDesktopSupported()){
+           try{
+               //Abre el manual de usuario que esta guardado en src como manual de usuario.pdf
+               File path = new File(new File("").getAbsoluteFile()+"/src/Manual de Usuario.PDF");
+               Desktop.getDesktop().open(path);
+           }catch(IOException ex){
+               
+           }
+       }   
         
     }//GEN-LAST:event_jMenu4MousePressed
 
@@ -316,6 +332,14 @@ public class Excel extends javax.swing.JFrame {
             jTableAZ.setFont(tipoletra);
         }
     }//GEN-LAST:event_jMenuItem12ActionPerformed
+
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        // TODO add your handling code here:
+        JColorChooser jcc = new JColorChooser();
+        Color c = jcc.showDialog(null,"Seleccione el Color",Color.RED);
+        //Cambia el color de las celdas
+        jTableAZ.setBackground(c);
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
  
 //AQUI VAN TODOS LAS FUNCIONES Y METODOS
     //RESTAURAR
@@ -461,9 +485,15 @@ public class Excel extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTableAZ;
     // End of variables declaration//GEN-END:variables
+
+    private static class JColorChoose {
+
+       
+    }
 
     
 
