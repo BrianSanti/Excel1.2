@@ -15,7 +15,7 @@ import javax.swing.border.MatteBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableModel;
-//import say.swing.JFontChooser;
+import say.swing.JFontChooser;
 
 
 
@@ -55,12 +55,6 @@ public class Excel extends javax.swing.JFrame {
 
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableAZ = new javax.swing.JTable();
-        jPanel2 = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
-        jblTipoletra = new javax.swing.JLabel();
-        btnTipoLetra = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem5 = new javax.swing.JMenuItem();
@@ -71,12 +65,7 @@ public class Excel extends javax.swing.JFrame {
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
-        jMenu5 = new javax.swing.JMenu();
-        jMenuItem7 = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
-        jMenuItem9 = new javax.swing.JMenuItem();
-        jMenuItem10 = new javax.swing.JMenuItem();
-        jMenuItem11 = new javax.swing.JMenuItem();
+        jMenuItem12 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -126,84 +115,12 @@ public class Excel extends javax.swing.JFrame {
         jTableAZ.setDropMode(javax.swing.DropMode.ON_OR_INSERT);
         jScrollPane2.setViewportView(jTableAZ);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Fuente"));
-
-        jblTipoletra.setText("Tipo De Letra");
-
-        btnTipoLetra.setText("Tipo De Letra");
-        btnTipoLetra.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTipoLetraActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jblTipoletra)
-                    .addComponent(btnTipoLetra))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jblTipoletra)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnTipoLetra)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        jButton2.setText("jButton2");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(507, 507, 507)
-                .addComponent(jButton1)
-                .addGap(27, 27, 27)
-                .addComponent(jButton2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
         jMenuBar1.setBackground(new java.awt.Color(255, 255, 255));
 
         jMenu1.setBackground(new java.awt.Color(255, 255, 255));
         jMenu1.setText("ARCHIVO");
 
+        jMenuItem5.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem5.setText("ABRIR");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -212,6 +129,7 @@ public class Excel extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem5);
 
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_G, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem1.setText("GUARDAR");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -242,6 +160,7 @@ public class Excel extends javax.swing.JFrame {
         jMenu3.setBackground(new java.awt.Color(255, 255, 255));
         jMenu3.setText("OPCIONES");
 
+        jMenuItem4.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem4.setText("COPIAR");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -250,6 +169,7 @@ public class Excel extends javax.swing.JFrame {
         });
         jMenu3.add(jMenuItem4);
 
+        jMenuItem3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem3.setText("PEGAR");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -266,54 +186,13 @@ public class Excel extends javax.swing.JFrame {
         });
         jMenu3.add(jMenuItem6);
 
-        jMenu5.setText("TIPO DE LETRA");
-
-        jMenuItem7.setText("CALIBRI");
-        jMenuItem7.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jMenuItem7MousePressed(evt);
-            }
-        });
-        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem12.setText("FUENTE");
+        jMenuItem12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem7ActionPerformed(evt);
+                jMenuItem12ActionPerformed(evt);
             }
         });
-        jMenu5.add(jMenuItem7);
-
-        jMenuItem8.setText("ARIAL");
-        jMenuItem8.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jMenuItem8MousePressed(evt);
-            }
-        });
-        jMenu5.add(jMenuItem8);
-
-        jMenuItem9.setText("MV BOLI");
-        jMenuItem9.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jMenuItem9MousePressed(evt);
-            }
-        });
-        jMenu5.add(jMenuItem9);
-
-        jMenuItem10.setText("CONSOLAS");
-        jMenuItem10.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jMenuItem10MousePressed(evt);
-            }
-        });
-        jMenu5.add(jMenuItem10);
-
-        jMenuItem11.setText("COMIC SANS MS");
-        jMenuItem11.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jMenuItem11MousePressed(evt);
-            }
-        });
-        jMenu5.add(jMenuItem11);
-
-        jMenu3.add(jMenu5);
+        jMenu3.add(jMenuItem12);
 
         jMenuBar1.add(jMenu3);
 
@@ -334,19 +213,15 @@ public class Excel extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1257, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1257, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 471, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 456, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -410,35 +285,6 @@ public class Excel extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
-    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
-
-    }//GEN-LAST:event_jMenuItem7ActionPerformed
-
-    private void jMenuItem7MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem7MousePressed
-        Font fuente = new Font("Calibri", 10,20);
-        jTableAZ.setFont(fuente); 
-    }//GEN-LAST:event_jMenuItem7MousePressed
-
-    private void jMenuItem8MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem8MousePressed
-        Font fuente = new Font("Arial", 10, 20);
-        jTableAZ.setFont(fuente); 
-    }//GEN-LAST:event_jMenuItem8MousePressed
-
-    private void jMenuItem9MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem9MousePressed
-          Font fuente = new Font("MV Boli", 10, 20);
-        jTableAZ.setFont(fuente); 
-    }//GEN-LAST:event_jMenuItem9MousePressed
-
-    private void jMenuItem10MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem10MousePressed
-           Font fuente = new Font("Consolas", 10, 20);
-        jTableAZ.setFont(fuente); 
-    }//GEN-LAST:event_jMenuItem10MousePressed
-
-    private void jMenuItem11MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem11MousePressed
-           Font fuente = new Font("Comic Sans MS", 10, 20);
-        jTableAZ.setFont(fuente); 
-    }//GEN-LAST:event_jMenuItem11MousePressed
-
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
         // boton para cargar o abrir
            final JFileChooser fc = new JFileChooser();
@@ -451,98 +297,20 @@ public class Excel extends javax.swing.JFrame {
             }   
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
-    private void btnTipoLetraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTipoLetraActionPerformed
-//       JFontChooser tipodelaletraseleccion = new JFontChooser();
-//       int inttp = tipodelaletraseleccion.showDialog(this);
-//       if(inttp == JFontChooser.OK_OPTION){
-//           tipoletra = tipodelaletraseleccion.getSelectedFont();
-//           jTableAZ.setFont(tipoletra);
-//       }
-    }//GEN-LAST:event_btnTipoLetraActionPerformed
-
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        // TODO add your handling code here:
-         int a = jTableAZ.getSelectedColumn(), b = jTableAZ.getSelectedRow();
-            if (Excel.this.clipboard != null){
-                JOptionPane.showInputDialog("Si1");
-              for (int i = 0; i <= Excel.this.clipboard[0].length - 1; i++) {
-                  JOptionPane.showInputDialog("Si2");
-                if (a + i <= Excel.this.jTableAZ.getColumnCount() - 1) {
-                    JOptionPane.showInputDialog("Si3");
-                  for (int j = 0; j <= Excel.this.clipboard.length - 1; j++) {
-                      JOptionPane.showInputDialog("Si4");
-                    if (b + j <= Excel.this.jTableAZ.getRowCount() - 1) {
-                        JOptionPane.showInputDialog("Si5");
-                      jTableAZ.setValueAt(Excel.this.clipboard[j][i], b + j, a + i);
-                      JOptionPane.showInputDialog("Si");
-                    }
-                  } 
-                }
-              } 
-            }else{
-                JOptionPane.showInputDialog("Si");
-            }
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
-
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        // COMENTADO PORQUE DA ERROR; NO SIRVE
-        
-//        int[] a = jTableAZ.getSelectedColumns(), b = jTableAZ.getSelectedRows();
-//            Excel.this.clipboard = new CellData[b.length][a.length];
-//            
-//            for (int i = 0; i <= a.length - 1; i++) {
-//              for (int j = 0; j <= b.length - 1; j++) {
-//                CellData temp;
-//                  temp = (CellData) jTableAZ.getValueAt(b[j], a[i]);
-//                  JOptionPane.showInputDialog("sdasd "+temp);
-//                try {
-//                  Excel.this.clipboard[j][i] = (CellData)temp.clone();
-//                  
-//                } catch (CloneNotSupportedException ex) {}
-//               
-//              }
-//              } 
-
-                    
-
-
-
-
-
-
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-        File file = new File("copiar.txt");
-        
-        copiar(file);
-        
-        
-        
-        
-        
-        
-//        System.out.println(""+datos);
-//        
-//        for(i = 0; i < rows.length ; i++){
-//            String[] fil =datos.split("\n");
-//            for(j = 0; j < colm.length ; j++){
-//            String[] col = fil[i].split("\t");
-//            
-//            jTableAZ.setValueAt(col[j], 15+i, 8+j);
-//        }
-//            System.out.print("\n");
-//        }
-//        
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         //ABRIR
         File file = new File("copiar.txt");
         pegar(file);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+      File file = new File("copiar.txt");   
+        copiar(file);
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
         
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jMenuItem12ActionPerformed
  
 //AQUI VAN TODOS LAS FUNCIONES Y METODOS
     //RESTAURAR
@@ -676,31 +444,20 @@ public class Excel extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnTipoLetra;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem10;
-    private javax.swing.JMenuItem jMenuItem11;
+    private javax.swing.JMenuItem jMenuItem12;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItem9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTableAZ;
-    private javax.swing.JLabel jblTipoletra;
     // End of variables declaration//GEN-END:variables
 
     
