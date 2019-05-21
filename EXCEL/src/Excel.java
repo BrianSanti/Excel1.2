@@ -30,10 +30,13 @@ import say.swing.JFontChooser;
  * @author BRIAN
  */
 public class Excel extends javax.swing.JFrame {
+    
+    
     DefaultTableModel md;
     String data [][] = {};
     Font tipoletra;
     CellData[][] clipboard;
+    
     public Excel() {
         md = new DefaultTableModel();
         initComponents();
@@ -41,6 +44,7 @@ public class Excel extends javax.swing.JFrame {
         tcm.getColumn(0).setResizable(false);
         tcm.getColumn(0).setPreferredWidth(25);
         jTableAZ.getTableHeader().setReorderingAllowed(false);
+        
    
     }
 
@@ -75,6 +79,7 @@ public class Excel extends javax.swing.JFrame {
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
         jMenuItem11 = new javax.swing.JMenuItem();
+        jMenuItem12 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -288,6 +293,14 @@ public class Excel extends javax.swing.JFrame {
 
         jMenu3.add(jMenu5);
 
+        jMenuItem12.setText("COLOR FONDO");
+        jMenuItem12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem12ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem12);
+
         jMenuBar1.add(jMenu3);
 
         jMenu4.setBackground(new java.awt.Color(255, 255, 255));
@@ -469,6 +482,15 @@ public class Excel extends javax.swing.JFrame {
               }
               } 
     }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
+        // TODO add your handling code here:
+        //FOndo
+        JColorChooser jcc = new JColorChooser();
+        Color c = jcc.showDialog(null, "Please select a color",Color.RED);
+        jTableAZ.setBackground(c);
+        
+    }//GEN-LAST:event_jMenuItem12ActionPerformed
  
 //AQUI VAN TODOS LAS FUNCIONES Y METODOS
     //RESTAURAR
@@ -550,6 +572,7 @@ public class Excel extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem11;
+    private javax.swing.JMenuItem jMenuItem12;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
