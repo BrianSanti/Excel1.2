@@ -1,21 +1,13 @@
-
 import java.awt.Color;
 import java.awt.Desktop;
 import javax.swing.JColorChooser;
 import java.awt.Font; 
 import java.io.*;
-import java.util.*;
-import java.util.Scanner;
-import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.*;
-import javax.swing.table.*;
-import javax.swing.UIManager;
-import javax.swing.border.MatteBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
-import javax.swing.table.TableModel;
 import say.swing.JFontChooser;
 
 
@@ -41,8 +33,7 @@ public class Excel extends javax.swing.JFrame {
         TableColumnModel tcm = jTableAZ.getColumnModel();
         tcm.getColumn(0).setResizable(false);
         tcm.getColumn(0).setPreferredWidth(25);
-        jTableAZ.getTableHeader().setReorderingAllowed(false);
-   
+        jTableAZ.getTableHeader().setReorderingAllowed(false);  
     }
 
     /**
@@ -57,18 +48,19 @@ public class Excel extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableAZ = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenu3 = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        jMenuItem12 = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
+        jmuArchivo = new javax.swing.JMenu();
+        jmiAbrir = new javax.swing.JMenuItem();
+        jmiGuardar = new javax.swing.JMenuItem();
+        jmiSalir = new javax.swing.JMenuItem();
+        jmuNuevo = new javax.swing.JMenu();
+        jmuOpciones = new javax.swing.JMenu();
+        jmiCortar = new javax.swing.JMenuItem();
+        jmiCopiar = new javax.swing.JMenuItem();
+        jmiPegar = new javax.swing.JMenuItem();
+        jmiColorLetra = new javax.swing.JMenuItem();
+        jmiFuente = new javax.swing.JMenuItem();
+        jmiBackground = new javax.swing.JMenuItem();
+        jmuAyuda = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -119,101 +111,104 @@ public class Excel extends javax.swing.JFrame {
 
         jMenuBar1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jMenu1.setBackground(new java.awt.Color(255, 255, 255));
-        jMenu1.setText("ARCHIVO");
+        jmuArchivo.setBackground(new java.awt.Color(255, 255, 255));
+        jmuArchivo.setText("ARCHIVO");
 
-        jMenuItem5.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem5.setText("ABRIR");
-        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+        jmiAbrir.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
+        jmiAbrir.setText("ABRIR");
+        jmiAbrir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem5ActionPerformed(evt);
+                jmiAbrirActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem5);
+        jmuArchivo.add(jmiAbrir);
 
-        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_G, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem1.setText("GUARDAR");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        jmiGuardar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_G, java.awt.event.InputEvent.CTRL_MASK));
+        jmiGuardar.setText("GUARDAR");
+        jmiGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                jmiGuardarActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        jmuArchivo.add(jmiGuardar);
 
-        jMenuItem2.setText("SALIR");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        jmiSalir.setText("SALIR");
+        jmiSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                jmiSalirActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem2);
+        jmuArchivo.add(jmiSalir);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(jmuArchivo);
 
-        jMenu2.setBackground(new java.awt.Color(255, 255, 255));
-        jMenu2.setText("NUEVO ");
-        jMenu2.addMouseListener(new java.awt.event.MouseAdapter() {
+        jmuNuevo.setBackground(new java.awt.Color(255, 255, 255));
+        jmuNuevo.setText("NUEVO ");
+        jmuNuevo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jMenu2MousePressed(evt);
+                jmuNuevoMousePressed(evt);
             }
         });
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(jmuNuevo);
 
-        jMenu3.setBackground(new java.awt.Color(255, 255, 255));
-        jMenu3.setText("OPCIONES");
+        jmuOpciones.setBackground(new java.awt.Color(255, 255, 255));
+        jmuOpciones.setText("OPCIONES");
 
-        jMenuItem4.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem4.setText("COPIAR");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+        jmiCortar.setText("CORTAR");
+        jmuOpciones.add(jmiCortar);
+
+        jmiCopiar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
+        jmiCopiar.setText("COPIAR");
+        jmiCopiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
+                jmiCopiarActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem4);
+        jmuOpciones.add(jmiCopiar);
 
-        jMenuItem3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem3.setText("PEGAR");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+        jmiPegar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.CTRL_MASK));
+        jmiPegar.setText("PEGAR");
+        jmiPegar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
+                jmiPegarActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem3);
+        jmuOpciones.add(jmiPegar);
 
-        jMenuItem6.setText("COLOR DE LETRA");
-        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+        jmiColorLetra.setText("COLOR DE LETRA");
+        jmiColorLetra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem6ActionPerformed(evt);
+                jmiColorLetraActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem6);
+        jmuOpciones.add(jmiColorLetra);
 
-        jMenuItem12.setText("FUENTE");
-        jMenuItem12.addActionListener(new java.awt.event.ActionListener() {
+        jmiFuente.setText("FUENTE");
+        jmiFuente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem12ActionPerformed(evt);
+                jmiFuenteActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem12);
+        jmuOpciones.add(jmiFuente);
 
-        jMenuItem7.setText("COLOR DE FONDO");
-        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+        jmiBackground.setText("COLOR DE FONDO");
+        jmiBackground.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem7ActionPerformed(evt);
+                jmiBackgroundActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem7);
+        jmuOpciones.add(jmiBackground);
 
-        jMenuBar1.add(jMenu3);
+        jMenuBar1.add(jmuOpciones);
 
-        jMenu4.setBackground(new java.awt.Color(255, 255, 255));
-        jMenu4.setText("AYUDA");
-        jMenu4.addMouseListener(new java.awt.event.MouseAdapter() {
+        jmuAyuda.setBackground(new java.awt.Color(255, 255, 255));
+        jmuAyuda.setText("AYUDA");
+        jmuAyuda.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jMenu4MousePressed(evt);
+                jmuAyudaMousePressed(evt);
             }
         });
-        jMenuBar1.add(jMenu4);
+        jMenuBar1.add(jmuAyuda);
 
         setJMenuBar(jMenuBar1);
 
@@ -237,9 +232,8 @@ public class Excel extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // boton guardar 
-        
+    private void jmiGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiGuardarActionPerformed
+        // boton guardar        
         JFileChooser fc = new JFileChooser();
         fc.showSaveDialog(this);
         String guardar = fc.getSelectedFile().getAbsolutePath();
@@ -247,9 +241,9 @@ public class Excel extends javax.swing.JFrame {
         File file = new File(guardar);
         saveTable(file);
              
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_jmiGuardarActionPerformed
 
-    private void jMenu4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu4MousePressed
+    private void jmuAyudaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmuAyudaMousePressed
        
        if(Desktop.isDesktopSupported()){
            try{
@@ -261,15 +255,15 @@ public class Excel extends javax.swing.JFrame {
            }
        }   
         
-    }//GEN-LAST:event_jMenu4MousePressed
+    }//GEN-LAST:event_jmuAyudaMousePressed
 
-    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+    private void jmiColorLetraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiColorLetraActionPerformed
           Color c = JColorChooser.showDialog(rootPane,"COLOR", this.getForeground()); 
           jTableAZ.setForeground(c);
           
-    }//GEN-LAST:event_jMenuItem6ActionPerformed
+    }//GEN-LAST:event_jmiColorLetraActionPerformed
 
-    private void jMenu2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MousePressed
+    private void jmuNuevoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmuNuevoMousePressed
         
         String Columna="";
         Object[][] filas = new Object [31][27];
@@ -279,15 +273,11 @@ public class Excel extends javax.swing.JFrame {
             for(int intcolum = 1;intcolum<=26;intcolum++){
                 filas[intconteo][intcolum]= null;
             }        
-        }
-      
+        }     
         jTableAZ.setModel(new javax.swing.table.DefaultTableModel(filas,
             new String [] {
                 "","A", "B", "C", "D", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"
-            }
-                
-                
-                
+            }             
         ));
      
         TableColumnModel tcm = jTableAZ.getColumnModel();
@@ -295,13 +285,13 @@ public class Excel extends javax.swing.JFrame {
         tcm.getColumn(0).setPreferredWidth(25);
         jTableAZ.getTableHeader().setReorderingAllowed(false);
         
-    }//GEN-LAST:event_jMenu2MousePressed
+    }//GEN-LAST:event_jmuNuevoMousePressed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void jmiSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiSalirActionPerformed
         System.exit(0);
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_jmiSalirActionPerformed
 
-    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+    private void jmiAbrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiAbrirActionPerformed
         // boton para cargar o abrir
            final JFileChooser fc = new JFileChooser();
            fc.showOpenDialog(this);
@@ -311,42 +301,38 @@ public class Excel extends javax.swing.JFrame {
             if (f.isFile()){
                 loadTable(f);
             }   
-    }//GEN-LAST:event_jMenuItem5ActionPerformed
+    }//GEN-LAST:event_jmiAbrirActionPerformed
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+    private void jmiPegarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiPegarActionPerformed
         //ABRIR
         File file = new File("copiar.txt");
         pegar(file);
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
+    }//GEN-LAST:event_jmiPegarActionPerformed
 
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+    private void jmiCopiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiCopiarActionPerformed
       File file = new File("copiar.txt");   
-        copiar(file);
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
+      copiar(file);
+    }//GEN-LAST:event_jmiCopiarActionPerformed
 
-    private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
+    private void jmiFuenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiFuenteActionPerformed
         JFontChooser tipodeletra = new JFontChooser();
         int inttl = tipodeletra.showDialog(this);
         if(inttl == JFontChooser.OK_OPTION){
             tipoletra = tipodeletra.getSelectedFont();
             jTableAZ.setFont(tipoletra);
         }
-    }//GEN-LAST:event_jMenuItem12ActionPerformed
+    }//GEN-LAST:event_jmiFuenteActionPerformed
 
-    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+    private void jmiBackgroundActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiBackgroundActionPerformed
         // TODO add your handling code here:
         JColorChooser jcc = new JColorChooser();
         Color c = jcc.showDialog(null,"Seleccione el Color",Color.RED);
         //Cambia el color de las celdas
         jTableAZ.setBackground(c);
-    }//GEN-LAST:event_jMenuItem7ActionPerformed
+    }//GEN-LAST:event_jmiBackgroundActionPerformed
  
 //AQUI VAN TODOS LAS FUNCIONES Y METODOS
-    //RESTAURAR
-    public void restaurar(){
-        
-    }   
-    
+    //RESTAURAR       
     private void pegar(File file){
         int row = jTableAZ.getSelectedRow();
         int col = jTableAZ.getSelectedColumn();
@@ -386,26 +372,20 @@ public class Excel extends javax.swing.JFrame {
                    Object value = jTableAZ.getValueAt(rows[i],colm[j]);
 
                 if(value!=null){
-                            bw.write(jTableAZ.getValueAt(rows[i],colm[j]).toString()+"\t");
-                        }else{
-                            bw.write(" \t");
+                    bw.write(jTableAZ.getValueAt(rows[i],colm[j]).toString()+"\t");
+                }else{
+                    bw.write(" \t");
                 }
-
             }
-                bw.newLine();
+            bw.newLine();
             }
-            
+     
             bw.close();
             fw.close();
-            
-            
-            
+                   
         } catch (IOException ex) {
             Logger.getLogger(Excel.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
-        
     }
     
     private void saveTable(File file){   
@@ -473,21 +453,22 @@ public class Excel extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem12;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTableAZ;
+    private javax.swing.JMenuItem jmiAbrir;
+    private javax.swing.JMenuItem jmiBackground;
+    private javax.swing.JMenuItem jmiColorLetra;
+    private javax.swing.JMenuItem jmiCopiar;
+    private javax.swing.JMenuItem jmiCortar;
+    private javax.swing.JMenuItem jmiFuente;
+    private javax.swing.JMenuItem jmiGuardar;
+    private javax.swing.JMenuItem jmiPegar;
+    private javax.swing.JMenuItem jmiSalir;
+    private javax.swing.JMenu jmuArchivo;
+    private javax.swing.JMenu jmuAyuda;
+    private javax.swing.JMenu jmuNuevo;
+    private javax.swing.JMenu jmuOpciones;
     // End of variables declaration//GEN-END:variables
 
     private static class JColorChoose {
