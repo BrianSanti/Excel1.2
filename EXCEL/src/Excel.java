@@ -309,7 +309,12 @@ public class Excel extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
-        
+        JFontChooser tipodeletra = new JFontChooser();
+        int inttl = tipodeletra.showDialog(this);
+        if(inttl == JFontChooser.OK_OPTION){
+            tipoletra = tipodeletra.getSelectedFont();
+            jTableAZ.setFont(tipoletra);
+        }
     }//GEN-LAST:event_jMenuItem12ActionPerformed
  
 //AQUI VAN TODOS LAS FUNCIONES Y METODOS
