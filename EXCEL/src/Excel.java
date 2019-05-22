@@ -1,7 +1,8 @@
+
 import java.awt.Color;
 import java.awt.Desktop;
 import javax.swing.JColorChooser;
-import java.awt.Font; 
+import java.awt.Font;
 import java.io.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -10,30 +11,29 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 import say.swing.JFontChooser;
 
-
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author BRIAN
  */
 public class Excel extends javax.swing.JFrame {
+
     DefaultTableModel md;
-    String data [][] = {};
+    String data[][] = {};
     Font tipoletra;
     CellData[][] clipboard;
+
     public Excel() {
-        md = new DefaultTableModel();
+        md = new DefaultTableModel() ;
         initComponents();
         TableColumnModel tcm = jTableAZ.getColumnModel();
         tcm.getColumn(0).setResizable(false);
         tcm.getColumn(0).setPreferredWidth(25);
-        jTableAZ.getTableHeader().setReorderingAllowed(false);  
+        jTableAZ.getTableHeader().setReorderingAllowed(false);
     }
 
     /**
@@ -237,54 +237,54 @@ public class Excel extends javax.swing.JFrame {
         JFileChooser fc = new JFileChooser();
         fc.showSaveDialog(this);
         String guardar = fc.getSelectedFile().getAbsolutePath();
-        
+
         File file = new File(guardar);
         saveTable(file);
-             
+
     }//GEN-LAST:event_jmiGuardarActionPerformed
 
     private void jmuAyudaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmuAyudaMousePressed
-       
-       if(Desktop.isDesktopSupported()){
-           try{
-               //Abre el manual de usuario que esta guardado en src como manual de usuario.pdf
-               File path = new File(new File("").getAbsoluteFile()+"/src/Manual de Usuario.PDF");
-               Desktop.getDesktop().open(path);
-           }catch(IOException ex){
-               
-           }
-       }   
-        
+
+        if (Desktop.isDesktopSupported()) {
+            try {
+                //Abre el manual de usuario que esta guardado en src como manual de usuario.pdf
+                File path = new File(new File("").getAbsoluteFile() + "/src/Manual de Usuario.PDF");
+                Desktop.getDesktop().open(path);
+            } catch (IOException ex) {
+
+            }
+        }
+
     }//GEN-LAST:event_jmuAyudaMousePressed
 
     private void jmiColorLetraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiColorLetraActionPerformed
-          Color c = JColorChooser.showDialog(rootPane,"COLOR", this.getForeground()); 
-          jTableAZ.setForeground(c);
-          
+        Color c = JColorChooser.showDialog(rootPane, "COLOR", this.getForeground());
+        jTableAZ.setForeground(c);
+
     }//GEN-LAST:event_jmiColorLetraActionPerformed
 
     private void jmuNuevoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmuNuevoMousePressed
-        
-        String Columna="";
-        Object[][] filas = new Object [31][27];
-        for(int intconteo = 0;intconteo<=30;intconteo++){
-            Columna = Integer.toString(intconteo+1);  
-            filas[intconteo][0]=Columna;
-            for(int intcolum = 1;intcolum<=26;intcolum++){
-                filas[intconteo][intcolum]= null;
-            }        
-        }     
+
+        String Columna = "";
+        Object[][] filas = new Object[31][27];
+        for (int intconteo = 0; intconteo <= 30; intconteo++) {
+            Columna = Integer.toString(intconteo + 1);
+            filas[intconteo][0] = Columna;
+            for (int intcolum = 1; intcolum <= 26; intcolum++) {
+                filas[intconteo][intcolum] = null;
+            }
+        }
         jTableAZ.setModel(new javax.swing.table.DefaultTableModel(filas,
-            new String [] {
-                "","A", "B", "C", "D", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"
-            }             
+                new String[]{
+                    "", "A", "B", "C", "D", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"
+                }
         ));
-     
+
         TableColumnModel tcm = jTableAZ.getColumnModel();
         tcm.getColumn(0).setResizable(false);
         tcm.getColumn(0).setPreferredWidth(25);
         jTableAZ.getTableHeader().setReorderingAllowed(false);
-        
+
     }//GEN-LAST:event_jmuNuevoMousePressed
 
     private void jmiSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiSalirActionPerformed
@@ -293,14 +293,14 @@ public class Excel extends javax.swing.JFrame {
 
     private void jmiAbrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiAbrirActionPerformed
         // boton para cargar o abrir
-           final JFileChooser fc = new JFileChooser();
-           fc.showOpenDialog(this);
-           String path = fc.getSelectedFile().getAbsolutePath();          
-           File f = new File(path);
+        final JFileChooser fc = new JFileChooser();
+        fc.showOpenDialog(this);
+        String path = fc.getSelectedFile().getAbsolutePath();
+        File f = new File(path);
 
-            if (f.isFile()){
-                loadTable(f);
-            }   
+        if (f.isFile()) {
+            loadTable(f);
+        }
     }//GEN-LAST:event_jmiAbrirActionPerformed
 
     private void jmiPegarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiPegarActionPerformed
@@ -310,14 +310,14 @@ public class Excel extends javax.swing.JFrame {
     }//GEN-LAST:event_jmiPegarActionPerformed
 
     private void jmiCopiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiCopiarActionPerformed
-      File file = new File("copiar.txt");   
-      copiar(file);
+        File file = new File("copiar.txt");
+        copiar(file);
     }//GEN-LAST:event_jmiCopiarActionPerformed
 
     private void jmiFuenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiFuenteActionPerformed
         JFontChooser tipodeletra = new JFontChooser();
         int inttl = tipodeletra.showDialog(this);
-        if(inttl == JFontChooser.OK_OPTION){
+        if (inttl == JFontChooser.OK_OPTION) {
             tipoletra = tipodeletra.getSelectedFont();
             jTableAZ.setFont(tipoletra);
         }
@@ -326,120 +326,121 @@ public class Excel extends javax.swing.JFrame {
     private void jmiBackgroundActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiBackgroundActionPerformed
         // TODO add your handling code here:
         JColorChooser jcc = new JColorChooser();
-        Color c = jcc.showDialog(null,"Seleccione el Color",Color.RED);
+        Color c = jcc.showDialog(null, "Seleccione el Color", Color.RED);
         //Cambia el color de las celdas
         jTableAZ.setBackground(c);
     }//GEN-LAST:event_jmiBackgroundActionPerformed
- 
+
 //AQUI VAN TODOS LAS FUNCIONES Y METODOS
     //RESTAURAR       
-    private void pegar(File file){
+    private void pegar(File file) {
         int row = jTableAZ.getSelectedRow();
         int col = jTableAZ.getSelectedColumn();
-        
+
         try {
             FileReader fr = new FileReader(file);
             BufferedReader br = new BufferedReader(fr);
-            
+
             Object[] lines = br.lines().toArray();
-            String[] colmsAyd =lines[0].toString().split("\t");
-            
-            for(int i = 0; i < lines.length ; i++){
+            String[] colmsAyd = lines[0].toString().split("\t");
+
+            for (int i = 0; i < lines.length; i++) {
                 String[] colums = lines[i].toString().split("\t");
-                for(int j = 0; j < colmsAyd.length ; j++){
-                
-                jTableAZ.setValueAt(colums[j], row+i, col+j);
+                for (int j = 0; j < colmsAyd.length; j++) {
+
+                    jTableAZ.setValueAt(colums[j], row + i, col + j);
+                }
             }
-            }
-            
+
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Excel.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }
-    
-    private void copiar(File file){
+
+    private void copiar(File file) {
         int rows[] = jTableAZ.getSelectedRows();
         int colm[] = jTableAZ.getSelectedColumns();
-        
-        try {
-            
-            FileWriter fw = new FileWriter(file);
-            BufferedWriter bw = new BufferedWriter(fw);
-            
-            for(int i = 0; i < rows.length ; i++){
-                for(int j = 0; j < colm.length ; j++){
-                   Object value = jTableAZ.getValueAt(rows[i],colm[j]);
 
-                if(value!=null){
-                    bw.write(jTableAZ.getValueAt(rows[i],colm[j]).toString()+"\t");
-                }else{
-                    bw.write(" \t");
-                }
-            }
-            bw.newLine();
-            }
-     
-            bw.close();
-            fw.close();
-                   
-        } catch (IOException ex) {
-            Logger.getLogger(Excel.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    
-    private void saveTable(File file){   
         try {
+
             FileWriter fw = new FileWriter(file);
             BufferedWriter bw = new BufferedWriter(fw);
-            
-            for(int i = 0; i < jTableAZ.getRowCount(); i++){//rows
-                for(int j = 0; j < jTableAZ.getColumnCount(); j++){//columns
-                    Object value = jTableAZ.getValueAt(i,j);
-                    if(value!=null){
-                        bw.write(jTableAZ.getValueAt(i, j).toString()+",");
-                    }else{
-                        bw.write(" ,");
+
+            for (int i = 0; i < rows.length; i++) {
+                for (int j = 0; j < colm.length; j++) {
+                    Object value = jTableAZ.getValueAt(rows[i], colm[j]);
+
+                    if (value != null) {
+                        bw.write(jTableAZ.getValueAt(rows[i], colm[j]).toString() + "\t");
+                    } else {
+                        bw.write(" \t");
                     }
-                    
                 }
                 bw.newLine();
             }
-            
+
             bw.close();
             fw.close();
-            
+
         } catch (IOException ex) {
             Logger.getLogger(Excel.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
     }
-    
-    private DefaultTableModel getTableModel(JTable table){
-        DefaultTableModel model = (DefaultTableModel) table.getModel();        
+
+    private void saveTable(File file) {
+        try {
+            FileWriter fw = new FileWriter(file);
+            BufferedWriter bw = new BufferedWriter(fw);
+
+            for (int i = 0; i < jTableAZ.getRowCount(); i++) {//rows
+                for (int j = 0; j < jTableAZ.getColumnCount(); j++) {//columns
+                    Object value = jTableAZ.getValueAt(i, j);
+                    if (value != null) {
+                        bw.write(jTableAZ.getValueAt(i, j).toString() + ",");
+                    } else {
+                        bw.write(" ,");
+                    }
+
+                }
+                bw.newLine();
+            }
+
+            bw.close();
+            fw.close();
+
+        } catch (IOException ex) {
+            Logger.getLogger(Excel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    private DefaultTableModel getTableModel(JTable table) {
+        DefaultTableModel model = (DefaultTableModel) table.getModel();
+
         return model;
     }
-    
-    private void loadTable(File file) {        
+
+    private void loadTable(File file) {
         try {
             FileReader fr = new FileReader(file);
             BufferedReader br = new BufferedReader(fr);
-            
-            DefaultTableModel model = (DefaultTableModel)jTableAZ.getModel();
+
+            DefaultTableModel model = (DefaultTableModel) jTableAZ.getModel();
             model.setRowCount(0);
             Object[] lines = br.lines().toArray();
-            
-            for(int i = 0; i < lines.length; i++){
+
+            for (int i = 0; i < lines.length; i++) {
                 String[] row = lines[i].toString().split(",");
                 model.addRow(row);
             }
-            
+
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Excel.class.getName()).log(Level.SEVERE, null, ex);
         }
-    
+
     }
-    
+
     /**
      * @param args the command line arguments
      */
@@ -447,7 +448,7 @@ public class Excel extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Excel().setVisible(true);
-                
+
             }
         });
     }
@@ -473,10 +474,6 @@ public class Excel extends javax.swing.JFrame {
 
     private static class JColorChoose {
 
-       
     }
 
-    
-
-  
 }
