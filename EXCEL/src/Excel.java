@@ -30,6 +30,10 @@ public class Excel extends javax.swing.JFrame {
     public Excel() {
         md = new DefaultTableModel() ;
         initComponents();
+        
+        
+        //comandos para cambiar el tamaño y propiedades de la columna #filas
+        
         TableColumnModel tcm = jTableAZ.getColumnModel();
         tcm.getColumn(0).setResizable(false);
         tcm.getColumn(0).setPreferredWidth(25);
@@ -243,7 +247,9 @@ public class Excel extends javax.swing.JFrame {
         JFileChooser fc = new JFileChooser();
         fc.showSaveDialog(this);
         String guardar = fc.getSelectedFile().getAbsolutePath();
-
+        
+        //se creo el archivo en el que se guardara la tabla
+        
         File file = new File(guardar);
         saveTable(file);
 
@@ -264,28 +270,36 @@ public class Excel extends javax.swing.JFrame {
     }//GEN-LAST:event_jmuAyudaMousePressed
 
     private void jmiColorLetraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiColorLetraActionPerformed
+        //funcion llamada para cambiar tipo de letra
+        
         Color c = JColorChooser.showDialog(rootPane, "COLOR", this.getForeground());
         jTableAZ.setForeground(c);
 
     }//GEN-LAST:event_jmiColorLetraActionPerformed
 
     private void jmuNuevoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmuNuevoMousePressed
-
-        String Columna = "";
-        Object[][] filas = new Object[31][27];
-        for (int intconteo = 0; intconteo <= 30; intconteo++) {
+        //funcion para crear una nueva tabla 
+        
+        String Columna = "";                            
+        Object[][] filas = new Object[31][27];              //se crea la tabla en una matriz Object
+        
+        
+        for (int intconteo = 0; intconteo <= 30; intconteo++) {         //ciclo para llenar la tabla
             Columna = Integer.toString(intconteo + 1);
             filas[intconteo][0] = Columna;
             for (int intcolum = 1; intcolum <= 26; intcolum++) {
                 filas[intconteo][intcolum] = null;
             }
         }
-        jTableAZ.setModel(new javax.swing.table.DefaultTableModel(filas,
+        jTableAZ.setModel(new javax.swing.table.DefaultTableModel(filas,        //metodo para añadir cabecera
                 new String[]{
                     "", "A", "B", "C", "D", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"
                 }
         ));
 
+        
+        //codigo para editar la columna de #filas, para que no sea agrandable y de un especifico tamaño
+        
         TableColumnModel tcm = jTableAZ.getColumnModel();
         tcm.getColumn(0).setResizable(false);
         tcm.getColumn(0).setPreferredWidth(25);
@@ -310,17 +324,20 @@ public class Excel extends javax.swing.JFrame {
     }//GEN-LAST:event_jmiAbrirActionPerformed
 
     private void jmiPegarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiPegarActionPerformed
-        //ABRIR
+        // Boton ABRIR
         File file = new File("copiar.txt");
         pegar(file);
     }//GEN-LAST:event_jmiPegarActionPerformed
 
     private void jmiCopiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiCopiarActionPerformed
+        //Boton COPIAR
         File file = new File("copiar.txt");
         copiar(file);
     }//GEN-LAST:event_jmiCopiarActionPerformed
 
     private void jmiFuenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiFuenteActionPerformed
+        //Boton para cambiar tipo de letra
+        
         JFontChooser tipodeletra = new JFontChooser();
         int inttl = tipodeletra.showDialog(this);
         if (inttl == JFontChooser.OK_OPTION) {
@@ -338,44 +355,48 @@ public class Excel extends javax.swing.JFrame {
     }//GEN-LAST:event_jmiBackgroundActionPerformed
 
     private void jmiCortarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiCortarActionPerformed
+        //Boton CORTAR
+        
         File file = new File("copiar.txt");
-        copiar(file);
-        cortar();
+        copiar(file);                               //primero se copia lo seleccionado
+        cortar();                                   //luego se corta lo seleccionado
     }//GEN-LAST:event_jmiCortarActionPerformed
 
 //AQUI VAN TODOS LAS FUNCIONES Y METODOS
     //RESTAURAR       
     
     
-    private void cortar(){
+    private void cortar(){      //funcion cortar
         
-        int rows[] = jTableAZ.getSelectedRows();
+        int rows[] = jTableAZ.getSelectedRows();            //Se obtienen LAS CELDAS y COLUMNAS seleccionadas, todo el area
         int colm[] = jTableAZ.getSelectedColumns();
         
         for (int i = 0; i < rows.length; i++){
                 for (int j = 0; j < colm.length; j++){
-                    jTableAZ.setValueAt("", rows[i], colm[j]);
+                    jTableAZ.setValueAt("", rows[i], colm[j]);          //se borra/vacian las celdas seleccionadas
                 }
            }
         
     }
     
     private void pegar(File file) {
-        int row = jTableAZ.getSelectedRow();
+        //funcion pegar
+        
+        int row = jTableAZ.getSelectedRow();        //Se obtienen la celda y columna seleccionada
         int col = jTableAZ.getSelectedColumn();
 
         try {
-            FileReader fr = new FileReader(file);
+            FileReader fr = new FileReader(file);           //se crea el buffer para leer archivo 
             BufferedReader br = new BufferedReader(fr);
 
-            Object[] lines = br.lines().toArray();
-            String[] colmsAyd = lines[0].toString().split("\t");
+            Object[] lines = br.lines().toArray();                  //se almacenan las lineas en el obeto
+            String[] colmsAyd = lines[0].toString().split("\t");    //se dividen las lineas por columnas
 
-            for (int i = 0; i < lines.length; i++) {
+            for (int i = 0; i < lines.length; i++) {                    //ciclo para leer del archivo y pegar en la posicion obtenida anteriormente
                 String[] colums = lines[i].toString().split("\t");
                 for (int j = 0; j < colmsAyd.length; j++) {
 
-                    jTableAZ.setValueAt(colums[j], row + i, col + j);
+                    jTableAZ.setValueAt(colums[j], row + i, col + j);       //se edita la celda con el valor deseado
                 }
             }
 
@@ -387,22 +408,23 @@ public class Excel extends javax.swing.JFrame {
     }
 
     private void copiar(File file) {
+        //funcion copiar
         
-            int rows[] = jTableAZ.getSelectedRows();
+            int rows[] = jTableAZ.getSelectedRows();                    //Se obtienen LAS CELDAS y COLUMNAS seleccionadas, todo el area
             int colm[] = jTableAZ.getSelectedColumns();
             
 
         try {
 
-            FileWriter fw = new FileWriter(file);
+            FileWriter fw = new FileWriter(file);                       //se crea el buffer para leer el archivo
             BufferedWriter bw = new BufferedWriter(fw);
 
-            for (int i = 0; i < rows.length; i++) {
+            for (int i = 0; i < rows.length; i++) {                     // ciclo para copiar lo de cada celda individual
                 for (int j = 0; j < colm.length; j++) {
-                    Object value = jTableAZ.getValueAt(rows[i], colm[j]);
+                    Object value = jTableAZ.getValueAt(rows[i], colm[j]);       //se obtiene el valor de la celda
 
                     if (value != null) {
-                        bw.write(jTableAZ.getValueAt(rows[i], colm[j]).toString() + "\t");
+                        bw.write(jTableAZ.getValueAt(rows[i], colm[j]).toString() + "\t");          // se verifica si esta vacia o no
                     } else {
                         bw.write(" \t");
                     }
@@ -410,7 +432,7 @@ public class Excel extends javax.swing.JFrame {
                 bw.newLine();
             }
 
-            bw.close();
+            bw.close();                                         //se cierra el buffer
             fw.close();
 
         } catch (IOException ex) {
@@ -419,24 +441,27 @@ public class Excel extends javax.swing.JFrame {
     }
 
     private void saveTable(File file) {
+        //funcion guardar TODA la tabla 
+        
+        
         try {
-            FileWriter fw = new FileWriter(file);
+            FileWriter fw = new FileWriter(file);                   //se crea el buffer para el archivo
             BufferedWriter bw = new BufferedWriter(fw);
 
-            for (int i = 0; i < jTableAZ.getRowCount(); i++) {//rows
-                for (int j = 1; j < jTableAZ.getColumnCount(); j++) {//columns
+            for (int i = 0; i < jTableAZ.getRowCount(); i++) {                      //ciclo para leer la tabla y guardar en el archivo
+                for (int j = 1; j < jTableAZ.getColumnCount(); j++) {
                     Object value = jTableAZ.getValueAt(i, j);
-                    if (value != null) {
-                        bw.write(jTableAZ.getValueAt(i, j).toString() + "\t");
+                    if (value != null) {                                            //ciclo para verificar si está vacio o no la celda
+                        bw.write(jTableAZ.getValueAt(i, j).toString() + "\t");      //se escribe en el archivo lo obtenido en la celda, concatenando el separador "\t" que nos ayudara a diferencias filas y columnas
                     } else {
                         bw.write(" \t");
                     }
 
                 }
-                bw.newLine();
+                bw.newLine();           //se escribe una nueva linea en el archivo
             }
 
-            bw.close();
+            bw.close();                 //se cierra el buffer
             fw.close();
 
         } catch (IOException ex) {
@@ -452,21 +477,21 @@ public class Excel extends javax.swing.JFrame {
     }
 
     private void loadTable(File file) {
+        //funcion cargar tabla
+        
         try {
-            FileReader fr = new FileReader(file);
+            FileReader fr = new FileReader(file);                       //se crea el buffer
             BufferedReader br = new BufferedReader(fr);
 
-            DefaultTableModel model = (DefaultTableModel) jTableAZ.getModel();
-            model.setRowCount(0);
-            Object[] lines = br.lines().toArray();
-            
+            Object[] lines = br.lines().toArray();                      //el objeto lines recibira todas las lineas del archivo
+            String[] colmsAyd = lines[0].toString().split("\t");
+
             for (int i = 0; i < lines.length; i++) {
-                String[] row = lines[i].toString().split("\t");
-                model.addRow(row);
-            }
-            
-            for (int i = 0; i < lines.length; i++) {
-                jTableAZ.setValueAt((i+1),i,0);
+                String[] colums = lines[i].toString().split("\t");      //se separa por columnas gracias al separador "\t" que se concatenó antes        
+                for (int j = 0; j < colmsAyd.length; j++) {
+
+                    jTableAZ.setValueAt(colums[j+1], 0 + i, 1 + j);     //se escribe en la celda deseada de la tabla, empezando po 0,0 - 0,1 y así hasta llenarla
+                }
             }
 
         } catch (FileNotFoundException ex) {
