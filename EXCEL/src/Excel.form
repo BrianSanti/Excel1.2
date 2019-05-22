@@ -5,7 +5,7 @@
     <Menu class="javax.swing.JMenuBar" name="jMenuBar1">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+          <Color blue="cc" green="cc" red="cc" type="rgb"/>
         </Property>
       </Properties>
       <SubComponents>
@@ -22,6 +22,9 @@
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                   <KeyStroke key="Ctrl+A"/>
                 </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/icons8-abrir-carpeta-20.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="ABRIR"/>
               </Properties>
               <Events>
@@ -33,6 +36,9 @@
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                   <KeyStroke key="Ctrl+G"/>
                 </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/icons8-guardar-20.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="GUARDAR"/>
               </Properties>
               <Events>
@@ -41,6 +47,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jmiSalir">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/icons8-cancelar-20.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="SALIR"/>
               </Properties>
               <Events>
@@ -73,6 +82,9 @@
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                   <KeyStroke key="Ctrl+X"/>
                 </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/icons8-cup&#xf3;n-para-recortar-20.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="CORTAR"/>
               </Properties>
               <Events>
@@ -83,6 +95,9 @@
               <Properties>
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                   <KeyStroke key="Ctrl+C"/>
+                </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/icons8-pegar-20.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="COPIAR"/>
               </Properties>
@@ -95,6 +110,9 @@
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                   <KeyStroke key="Ctrl+V"/>
                 </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/icons8-pegar-20.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="PEGAR"/>
               </Properties>
               <Events>
@@ -103,6 +121,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jmiColorLetra">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/icons8-saturaci&#xf3;n-20.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="COLOR DE LETRA"/>
               </Properties>
               <Events>
@@ -111,6 +132,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jmiFuente">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/icons8-tipo-20.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="FUENTE"/>
               </Properties>
               <Events>
@@ -119,6 +143,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jmiBackground">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/icons8-color-de-relleno-20.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="COLOR DE FONDO"/>
               </Properties>
               <Events>
@@ -164,20 +191,12 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="jScrollPane2" pref="1257" max="32767" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-          </Group>
+          <Component id="jScrollPane2" alignment="0" pref="1281" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="jScrollPane2" min="-2" pref="456" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
-          </Group>
+          <Component id="jScrollPane2" alignment="0" pref="480" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>

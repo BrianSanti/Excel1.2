@@ -113,12 +113,13 @@ public class Excel extends javax.swing.JFrame {
         jTableAZ.setDropMode(javax.swing.DropMode.ON_OR_INSERT);
         jScrollPane2.setViewportView(jTableAZ);
 
-        jMenuBar1.setBackground(new java.awt.Color(255, 255, 255));
+        jMenuBar1.setBackground(new java.awt.Color(204, 204, 204));
 
         jmuArchivo.setBackground(new java.awt.Color(255, 255, 255));
         jmuArchivo.setText("ARCHIVO");
 
         jmiAbrir.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
+        jmiAbrir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons8-abrir-carpeta-20.png"))); // NOI18N
         jmiAbrir.setText("ABRIR");
         jmiAbrir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -128,6 +129,7 @@ public class Excel extends javax.swing.JFrame {
         jmuArchivo.add(jmiAbrir);
 
         jmiGuardar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_G, java.awt.event.InputEvent.CTRL_MASK));
+        jmiGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons8-guardar-20.png"))); // NOI18N
         jmiGuardar.setText("GUARDAR");
         jmiGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -136,6 +138,7 @@ public class Excel extends javax.swing.JFrame {
         });
         jmuArchivo.add(jmiGuardar);
 
+        jmiSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons8-cancelar-20.png"))); // NOI18N
         jmiSalir.setText("SALIR");
         jmiSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -159,6 +162,7 @@ public class Excel extends javax.swing.JFrame {
         jmuOpciones.setText("OPCIONES");
 
         jmiCortar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_X, java.awt.event.InputEvent.CTRL_MASK));
+        jmiCortar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons8-cupón-para-recortar-20.png"))); // NOI18N
         jmiCortar.setText("CORTAR");
         jmiCortar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -168,6 +172,7 @@ public class Excel extends javax.swing.JFrame {
         jmuOpciones.add(jmiCortar);
 
         jmiCopiar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
+        jmiCopiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons8-pegar-20.png"))); // NOI18N
         jmiCopiar.setText("COPIAR");
         jmiCopiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -177,6 +182,7 @@ public class Excel extends javax.swing.JFrame {
         jmuOpciones.add(jmiCopiar);
 
         jmiPegar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.CTRL_MASK));
+        jmiPegar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons8-pegar-20.png"))); // NOI18N
         jmiPegar.setText("PEGAR");
         jmiPegar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -185,6 +191,7 @@ public class Excel extends javax.swing.JFrame {
         });
         jmuOpciones.add(jmiPegar);
 
+        jmiColorLetra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons8-saturación-20.png"))); // NOI18N
         jmiColorLetra.setText("COLOR DE LETRA");
         jmiColorLetra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -193,6 +200,7 @@ public class Excel extends javax.swing.JFrame {
         });
         jmuOpciones.add(jmiColorLetra);
 
+        jmiFuente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons8-tipo-20.png"))); // NOI18N
         jmiFuente.setText("FUENTE");
         jmiFuente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -201,6 +209,7 @@ public class Excel extends javax.swing.JFrame {
         });
         jmuOpciones.add(jmiFuente);
 
+        jmiBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons8-color-de-relleno-20.png"))); // NOI18N
         jmiBackground.setText("COLOR DE FONDO");
         jmiBackground.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -226,17 +235,11 @@ public class Excel extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1257, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1281, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 456, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE)
         );
 
         pack();
@@ -270,7 +273,7 @@ public class Excel extends javax.swing.JFrame {
     }//GEN-LAST:event_jmuAyudaMousePressed
 
     private void jmiColorLetraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiColorLetraActionPerformed
-        //funcion llamada para cambiar tipo de letra
+        //funcion llamada para cambiar el color de la letra
         
         Color c = JColorChooser.showDialog(rootPane, "COLOR", this.getForeground());
         jTableAZ.setForeground(c);
