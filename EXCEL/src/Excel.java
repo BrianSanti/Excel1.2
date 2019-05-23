@@ -11,7 +11,14 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 import say.swing.JFontChooser;
 
-/*
+/* UNIVERSIDAD MARIANO GALVEZ DE GUATEMALA
+    PROGRAMACION 3
+    BILLY JESHUA SICAN MATIAS 0901-17-16250
+    KEVIN OSWALDO LOARCA FUENTES 0901-17-11537
+    JAVIER ANTONIO ARGUETA GUERRA 0901-17-1010
+    BRIAN HUMBERTO SANTIZO HERRERA 0901-17-1483
+    FRANCISCO GREGORIO BERGANZA FRANCO 0901-17-16694
+
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -330,7 +337,7 @@ public class Excel extends javax.swing.JFrame {
     }//GEN-LAST:event_jmiAbrirActionPerformed
 
     private void jmiPegarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiPegarActionPerformed
-        //JAVIER ARGUETA
+            //JAVIER ARGUETA
         //KEVIN LOARCA
         // Boton ABRIR
         File file = new File("copiar.txt");
