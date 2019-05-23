@@ -21,7 +21,7 @@ import say.swing.JFontChooser;
  * @author BRIAN
  */
 public class Excel extends javax.swing.JFrame {
-
+    
     DefaultTableModel md;
     String data[][] = {};
     Font tipoletra;
@@ -246,6 +246,8 @@ public class Excel extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jmiGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiGuardarActionPerformed
+        //JAVIER ARGUETA
+        
         // boton guardar        
         JFileChooser fc = new JFileChooser();
         fc.showSaveDialog(this);
@@ -273,6 +275,7 @@ public class Excel extends javax.swing.JFrame {
     }//GEN-LAST:event_jmuAyudaMousePressed
 
     private void jmiColorLetraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiColorLetraActionPerformed
+        //BRYAN SANTIZO
         //funcion llamada para cambiar el color de la letra
         
         Color c = JColorChooser.showDialog(rootPane, "COLOR", this.getForeground());
@@ -282,11 +285,10 @@ public class Excel extends javax.swing.JFrame {
 
     private void jmuNuevoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmuNuevoMousePressed
         //funcion para crear una nueva tabla 
-        
+        //BILLY SICAN
+        //BRIAN SANTIZO
         String Columna = "";                            
         Object[][] filas = new Object[31][27];              //se crea la tabla en una matriz Object
-        
-        
         for (int intconteo = 0; intconteo <= 30; intconteo++) {         //ciclo para llenar la tabla
             Columna = Integer.toString(intconteo + 1);
             filas[intconteo][0] = Columna;
@@ -299,8 +301,6 @@ public class Excel extends javax.swing.JFrame {
                     "", "A", "B", "C", "D", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"
                 }
         ));
-
-        
         //codigo para editar la columna de #filas, para que no sea agrandable y de un especifico tamaño
         
         TableColumnModel tcm = jTableAZ.getColumnModel();
@@ -311,10 +311,13 @@ public class Excel extends javax.swing.JFrame {
     }//GEN-LAST:event_jmuNuevoMousePressed
 
     private void jmiSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiSalirActionPerformed
+        //BRYAN SANTIZO
         System.exit(0);
     }//GEN-LAST:event_jmiSalirActionPerformed
 
     private void jmiAbrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiAbrirActionPerformed
+        //JAVIER ARGUETA
+        
         // boton para cargar o abrir
         final JFileChooser fc = new JFileChooser();
         fc.showOpenDialog(this);
@@ -327,18 +330,23 @@ public class Excel extends javax.swing.JFrame {
     }//GEN-LAST:event_jmiAbrirActionPerformed
 
     private void jmiPegarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiPegarActionPerformed
+        //JAVIER ARGUETA
+        //KEVIN LOARCA
         // Boton ABRIR
         File file = new File("copiar.txt");
         pegar(file);
     }//GEN-LAST:event_jmiPegarActionPerformed
 
     private void jmiCopiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiCopiarActionPerformed
+        //JAVIER ARGUETA
+        //KEVIN LOARCA
         //Boton COPIAR
         File file = new File("copiar.txt");
         copiar(file);
     }//GEN-LAST:event_jmiCopiarActionPerformed
 
     private void jmiFuenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiFuenteActionPerformed
+        //BILLY SICAN
         //Boton para cambiar tipo de letra
         
         JFontChooser tipodeletra = new JFontChooser();
@@ -350,6 +358,7 @@ public class Excel extends javax.swing.JFrame {
     }//GEN-LAST:event_jmiFuenteActionPerformed
 
     private void jmiBackgroundActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiBackgroundActionPerformed
+        //KEVIN LOARCA
         // TODO add your handling code here:
         JColorChooser jcc = new JColorChooser();
         Color c = jcc.showDialog(null, "Seleccione el Color", Color.RED);
@@ -358,7 +367,8 @@ public class Excel extends javax.swing.JFrame {
     }//GEN-LAST:event_jmiBackgroundActionPerformed
 
     private void jmiCortarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiCortarActionPerformed
-        //Boton CORTAR
+    //FRANCISCO    
+    //Boton CORTAR
         
         File file = new File("copiar.txt");
         copiar(file);                               //primero se copia lo seleccionado
@@ -368,7 +378,7 @@ public class Excel extends javax.swing.JFrame {
 //AQUI VAN TODOS LAS FUNCIONES Y METODOS
     //RESTAURAR       
     
-    
+    //FRANCISCO
     private void cortar(){      //funcion cortar
         
         int rows[] = jTableAZ.getSelectedRows();            //Se obtienen LAS CELDAS y COLUMNAS seleccionadas, todo el area
@@ -381,7 +391,7 @@ public class Excel extends javax.swing.JFrame {
            }
         
     }
-    
+    //JAVIER ARGUETA
     private void pegar(File file) {
         //funcion pegar
         
@@ -409,7 +419,7 @@ public class Excel extends javax.swing.JFrame {
 
         file.delete();
     }
-
+    //JAVIER ARGUETA
     private void copiar(File file) {
         //funcion copiar
         
@@ -442,7 +452,7 @@ public class Excel extends javax.swing.JFrame {
             Logger.getLogger(Excel.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    //JAVIER ARGUETA
     private void saveTable(File file) {
         //funcion guardar TODA la tabla 
         
@@ -478,7 +488,7 @@ public class Excel extends javax.swing.JFrame {
 
         return model;
     }
-
+    //JAVIER ARGUETA
     private void loadTable(File file) {
         //funcion cargar tabla
         

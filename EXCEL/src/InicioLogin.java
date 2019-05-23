@@ -165,7 +165,8 @@ public class InicioLogin extends javax.swing.JFrame {
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
        
-     /*  String strUser, strPass;//variables para el uso de ingreso
+        //FRANCISCO
+        
        try{//se abre un try y se da la ubicacion en donde estara la ruta de la bse de datos
            //ocn acceso al usuario y contrasaeña
            //se accede a la tabla en la que se hara la consulta y el capo con el que se consultara
@@ -190,15 +191,15 @@ public class InicioLogin extends javax.swing.JFrame {
             }
        }catch(Exception e){
            JOptionPane.showMessageDialog(null, e);
-       }*/
-        if((txtuser.getText()).equals("Admin") && (txtPass.getText()).equals("Admin")){
+       }
+        /*if((txtuser.getText()).equals("Admin") && (txtPass.getText()).equals("Admin")){
                     Excel ex = new Excel();
                     ex.setVisible(true);
                    this.setVisible(false);                             
         }else{
                 //de lo contrario manda una mensaje 
         JOptionPane.showMessageDialog(null, "Ingreso Denegado");
-        }
+        }*/
         
     }//GEN-LAST:event_btnIngresarActionPerformed
 
