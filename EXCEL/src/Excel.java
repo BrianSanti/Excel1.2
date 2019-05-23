@@ -493,7 +493,7 @@ public class Excel extends javax.swing.JFrame {
                 String[] colums = lines[i].toString().split("\t");      //se separa por columnas gracias al separador "\t" que se concatenó antes        
                 for (int j = 0; j < colmsAyd.length; j++) {
 
-                    jTableAZ.setValueAt(colums[j+1], 0 + i, 1 + j);     //se escribe en la celda deseada de la tabla, empezando po 0,0 - 0,1 y así hasta llenarla
+                    jTableAZ.setValueAt(colums[j], i, 1 + j);     //se escribe en la celda deseada de la tabla, empezando po 0,0 - 0,1 y así hasta llenarla
                 }
             }
 
